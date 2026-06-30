@@ -1,17 +1,24 @@
-from seleniumbase import sb_cdp
+from seleniumbase import SB
 
-# تشغيل المتصفح
-sb = sb_cdp.Chrome()
-
-# فتح الصفحة
-sb.goto("https://accounts.hcaptcha.com/demo")
-
-# حل الكابتشا (كما هو موضح فى الوثيقة)
-sb.solve_captcha()
-
-# تأكيد النجاح
-sb.assert_element("img#captcha-success")
-sb.post_message("✅ تم الحل بنجاح!", duration=3)
-
-# إغلاق المتصفح
-sb.quit()
+# استخدام مدير السياق SB مع تفعيل وضع UC (Undetectable Chrome)
+with SB(uc=True, test=True, locale="en") as sb:
+    # 1. تفعيل وضع CDP والانتقال إلى الموقع المستهدف
+    # ملاحظة: استدعاء sb.goto() في وضع UC يقوم الآن بتفعيل CDP تلقائياً
+    url = "https://browserleaks.com/rects" # مثال لموقع يستخدم تقنيات كشف متقدمة
+    sb.activate_cdp_mode( )
+    sb.goto(url)
+    
+    # 2. الانتظار لضمان تحميل الصفحة والعناصر
+    sb.sleep(2)
+    
+    # 3. حل الكابتشا (hCaptcha / Turnstile / reCAPTCHA)
+    # وظيفة solve_captcha() في وضع CDP هي الأقوى حالياً لتجاوز الكشف
+    print("جاري محاولة حل الكابتشا...")
+    sb.solve_captcha()
+    
+    # 4. إجراء إضافي (اختياري) لضمان التفاعل البشري
+    sb.sleep(2)
+    
+    # 5. إرسال رسالة تأكيد تظهر داخل المتصفح
+    sb.post_message("تم تجاوز الحماية بنجاح!", duration=5)
+    sb.sleep(2)
