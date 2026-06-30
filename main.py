@@ -2,7 +2,12 @@ from seleniumbase import sb_cdp
 import time
 
 def main():
-    sb = sb_cdp.Chrome(headless=True)
+    # استخدم المسار الصحيح لـ Chromium في Docker
+    sb = sb_cdp.Chrome(
+        headless=True,
+        browser_executable_path="/usr/bin/chromium"
+    )
+    
     try:
         sb.goto("https://accounts.hcaptcha.com/demo")
         time.sleep(3)
