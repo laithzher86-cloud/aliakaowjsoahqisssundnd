@@ -4,7 +4,7 @@ from seleniumbase import SB
 with SB(uc=True, test=True, locale="en") as sb:
     # 1. تفعيل وضع CDP والانتقال إلى الموقع المستهدف
     # ملاحظة: استدعاء sb.goto() في وضع UC يقوم الآن بتفعيل CDP تلقائياً
-    url = "https://browserleaks.com/rects" # مثال لموقع يستخدم تقنيات كشف متقدمة
+    url = "https://accounts.hcaptcha.com/demo" # مثال لموقع يستخدم تقنيات كشف متقدمة
     sb.activate_cdp_mode( )
     sb.goto(url)
     
