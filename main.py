@@ -4,7 +4,7 @@ import time
 # بدء计时
 start_time = time.time()
 
-with SB(uc=True, test=True, ,headless=True,locale="en") as sb:
+with SB(uc=True, test=True,headless=True,locale="en") as sb:
     url = "https://accounts.hcaptcha.com/demo"
     
     # تفعيل وضع CDP والانتقال
