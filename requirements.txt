@@ -1,3 +1,5 @@
 seleniumbase
 playwright
 pyautogui
+requests
+curl_cffi
