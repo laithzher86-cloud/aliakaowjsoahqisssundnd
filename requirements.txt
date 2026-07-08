@@ -3,3 +3,8 @@ playwright
 pyautogui
 requests
 curl_cffi
+cloudscraper 
+curl_cffi 
+undetected-chromedriver 
+beautifulsoup4 
+user_agent
